@@ -11,7 +11,7 @@ resource "aws_route53_record" "gmail_mx" {
   zone_id = "${aws_route53_zone.dns_zone.zone_id}"
   type    = "MX"
   name    = ""
-  ttl = 3600
+  ttl     = 3600
 
   records = ["1 ASPMX.L.GOOGLE.COM.",
     "5 ALT1.ASPMX.L.GOOGLE.COM.",
