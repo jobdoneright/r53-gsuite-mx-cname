@@ -33,3 +33,7 @@ resource "aws_route53_record" "gsuite_cnames" {
   records = ["ghs.googlehosted.com"]
   ttl     = 3600
 }
+
+output "r53_zone_id" {
+  value = "${aws_route53_zone.dns_zone.zone_id}"
+}
