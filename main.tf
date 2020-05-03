@@ -34,6 +34,15 @@ resource "aws_route53_record" "gsuite_cnames" {
   ttl     = 3600
 }
 
+resource "aws_route53_record" "dkim" {
+  count   = "${length(var.dkim) > 0 ? 1 : 0}"
+  zone_id = "${aws_route53_zone.dns_zone.zone_id}"
+  name    = "google._domainkey"
+  type    = "TXT"
+  records = ["${var.dkim}"]
+  ttl     = 3600
+}
+
 output "r53_zone_id" {
   value = "${aws_route53_zone.dns_zone.zone_id}"
 }
